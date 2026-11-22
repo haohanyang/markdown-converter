@@ -63,6 +63,8 @@ const tabMd = $("tab-md"), tabPreview = $("tab-preview"), copyBtn = $("copy");
 function showTab(preview) {
   tabMd.setAttribute("aria-selected", String(!preview));
   tabPreview.setAttribute("aria-selected", String(preview));
+  tabMd.classList.toggle("active", !preview);
+  tabPreview.classList.toggle("active", preview);
   outputEl.hidden = preview;
   previewEl.hidden = !preview;
   if (preview) renderPreview();

@@ -4,38 +4,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Markdown Link Converter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Markdown Link Converter</h1>
-    <p>Turn relative links and image paths into full URLs, based on the page the markdown came from.</p>
-  </header>
+  <nav class="navbar bg-body-tertiary border-bottom mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">Markdown Link Converter</span>
+    </div>
+  </nav>
 
-  <main>
-    <label for="url">Markdown page URL</label>
-    <input id="url" type="url" placeholder="https://learn.microsoft.com/en-us/dotnet/core/" autocomplete="off">
-    <p id="error" class="error" role="alert" hidden></p>
+  <main class="container pb-5">
+    <p class="text-body-secondary">
+      Turn relative links and image paths into full URLs, based on the page the markdown came from.
+    </p>
 
-    <div class="columns">
-      <section>
-        <label for="input">Markdown</label>
-        <textarea id="input" spellcheck="false" placeholder="Paste markdown here..."></textarea>
+    <div class="mb-3">
+      <label for="url" class="form-label fw-semibold">Markdown page URL</label>
+      <input id="url" type="url" class="form-control" placeholder="https://learn.microsoft.com/en-us/dotnet/core/" autocomplete="off">
+      <div id="error" class="alert alert-danger py-2 mt-2 mb-0" role="alert" hidden></div>
+    </div>
+
+    <div class="row g-4">
+      <section class="col-lg-6">
+        <label for="input" class="form-label fw-semibold">Markdown</label>
+        <textarea id="input" class="form-control font-monospace" spellcheck="false" placeholder="Paste markdown here..."></textarea>
       </section>
 
-      <section>
-        <div class="bar">
-          <div class="tabs" role="tablist">
-            <button id="tab-md" role="tab" aria-selected="true">Markdown</button>
-            <button id="tab-preview" role="tab" aria-selected="false">Preview</button>
-          </div>
-          <button id="copy" type="button">Copy markdown</button>
+      <section class="col-lg-6">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item"><button id="tab-md" class="nav-link active" role="tab" aria-selected="true">Markdown</button></li>
+            <li class="nav-item"><button id="tab-preview" class="nav-link" role="tab" aria-selected="false">Preview</button></li>
+          </ul>
+          <button id="copy" type="button" class="btn btn-primary">Copy markdown</button>
         </div>
-        <textarea id="output" readonly spellcheck="false"></textarea>
-        <div id="preview" class="preview" hidden></div>
+        <textarea id="output" class="form-control font-monospace" readonly spellcheck="false"></textarea>
+        <div id="preview" class="preview form-control" hidden></div>
       </section>
     </div>
   </main>
