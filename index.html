@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Markdown Link Converter</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Markdown Link Converter</h1>
+    <p>Turn relative links and image paths into full URLs, based on the page the markdown came from.</p>
+  </header>
+
+  <main>
+    <label for="url">Markdown page URL</label>
+    <input id="url" type="url" placeholder="https://learn.microsoft.com/en-us/dotnet/core/" autocomplete="off">
+    <p id="error" class="error" role="alert" hidden></p>
+
+    <div class="columns">
+      <section>
+        <label for="input">Markdown</label>
+        <textarea id="input" spellcheck="false" placeholder="Paste markdown here..."></textarea>
+      </section>
+
+      <section>
+        <div class="bar">
+          <div class="tabs" role="tablist">
+            <button id="tab-md" role="tab" aria-selected="true">Markdown</button>
+            <button id="tab-preview" role="tab" aria-selected="false">Preview</button>
+          </div>
+          <button id="copy" type="button">Copy markdown</button>
+        </div>
+        <textarea id="output" readonly spellcheck="false"></textarea>
+        <div id="preview" class="preview" hidden></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
